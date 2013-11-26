@@ -30,7 +30,7 @@ class RelationshipElement(WorkbookMixinElement):
     def _get_title(self):
         return self.getFirstChildNodeByTagName(const.TAG_TITLE)
 
-    def _find_end_point(self, id):
+    def _find_end_point_old(self, id):
         owner_workbook = self.getOwnerWorkbook()
         if owner_workbook is None:
             return
@@ -41,6 +41,17 @@ class RelationshipElement(WorkbookMixinElement):
 
         if end_point.tagName == const.TAG_TOPIC:
             return TopicElement(end_point, owner_workbook)
+            
+    def _find_end_point(self, id):
+        owner_document = self.getOwnerDocument()
+        if owner_document is None:
+            return
+
+        topic_elems  = owner_document.getElementsByTagName(const.TAG_TOPIC)
+        found = [x for x in topic_elems if (x.getAttribute('id') == id)]
+        if len(found) < 1:
+            return
+        return TopicElement(found[0], self.getOwnerWorkbook())
 
     def getEnd1ID(self):
         return self.getAttribute(const.ATTR_END1)
@@ -56,11 +67,11 @@ class RelationshipElement(WorkbookMixinElement):
         self.setAttribute(const.ATTR_END2, id)
         self.updateModifiedTime()
 
-    def getEnd1(self, end1_id):
-        return self._find_end_point(end1_id)
+    def getEnd1(self):
+        return self._find_end_point(self.getEnd1ID())
 
-    def getEnd2(self, end2_id):
-        return self._find_end_point(end2_id)
+    def getEnd2(self):
+        return self._find_end_point(self.getEnd2ID())
 
     def getTitle(self):
         title = self._get_title()

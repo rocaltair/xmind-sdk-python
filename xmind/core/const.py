@@ -65,6 +65,7 @@ VAL_FOLDED = "folded"
 
 TOPIC_ROOT = "root"
 TOPIC_ATTACHED = "attached"
+TOPIC_DETACHED = "detached"
 
 FILE_PROTOCOL = "file://"
 TOPIC_PROTOCOL = "xmind:#"

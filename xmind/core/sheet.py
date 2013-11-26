@@ -65,6 +65,13 @@ class SheetElement(WorkbookMixinElement):
 
     def _getRelationships(self):
         return self.getFirstChildNodeByTagName(const.TAG_RELATIONSHIPS)
+        
+    def getRelationships(self):
+        owner_workbook = self.getOwnerWorkbook()
+        
+        rels = RelationshipsElement(self._getRelationships(), owner_workbook)
+        return [RelationshipElement(x, owner_workbook) for x in rels.getChildNodesByTagName(const.TAG_RELATIONSHIP)]
+
 
     def addRelationship(self, rel):
         """ Add relationship to sheet
