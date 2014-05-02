@@ -14,6 +14,7 @@ __author__ = "aiqi@xmind.net <Woody Ai>"
 
 from . import const
 from .workbook import WorkbookDocument
+from .style import StylesBookDocument
 
 from .. import utils
 
@@ -36,6 +37,7 @@ class WorkbookLoader(object):
 
         # Input Stream
         self._content_stream = None
+	self._styles_stream = None
 
         try:
             with utils.extract(self._input_source) as input_stream:
@@ -43,6 +45,8 @@ class WorkbookLoader(object):
                     if stream == const.CONTENT_XML:
                         self._content_stream = utils.parse_dom_string(
                             input_stream.read(stream))
+                    elif stream == const.STYLES_XML:
+                        self._styles_stream = utils.parse_dom_string(input_stream.read(stream))
         except:
             pass
 
@@ -54,6 +58,15 @@ class WorkbookLoader(object):
 
         workbook = WorkbookDocument(content, path)
         return workbook
+
+    def get_stylesbook(self):
+        """Parse XMind style.xml to `StylesBookDocument` object and return 
+	"""
+        content = self._styles_stream
+        path = self._input_source
+
+        stylesbook = StylesBookDocument(content, path)
+        return stylesbook
 
 
 def main():

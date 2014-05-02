@@ -352,6 +352,9 @@ class TopicElement(WorkbookMixinElement):
 
         notes.appendChild(new)
 
+    def getStyleId(self):
+	return self.getAttribute(const.ATTR_STYLE_ID)
+
 
 class ChildrenElement(WorkbookMixinElement):
     TAG_NAME = const.TAG_CHILDREN
@@ -395,6 +398,8 @@ class TopicsElement(WorkbookMixinElement):
 
         return sub_topics[index]
 
+    def getStyleId(self):
+	return self.getAttribute(const.ATTR_STYLE_ID)
 
 def main():
     pass

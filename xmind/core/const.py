@@ -31,6 +31,7 @@ MARKER_SHEET = MARKERS_DIR + MARKER_SHEET_XML
 REVISIONS_XML = "revisions.xml"
 
 TAG_WORKBOOK = "xmap-content"
+TAG_STYLESBOOK = "xmap-styles"
 TAG_TOPIC = "topic"
 TAG_TOPICS = "topics"
 TAG_SHEET = "sheet"
@@ -42,6 +43,10 @@ TAG_RELATIONSHIP = "relationship"
 TAG_RELATIONSHIPS = "relationships"
 TAG_MARKERREFS = "marker-refs"
 TAG_MARKERREF = "marker-ref"
+TAG_STYLES = "styles"
+TAG_STYLE = "style"
+TAG_TOPIC_PROPERTIES = "topic-properties"
+
 ATTR_VERSION = "version"
 ATTR_ID = "id"
 ATTR_STYLE_ID = "style-id"
@@ -55,6 +60,8 @@ ATTR_TYPE = "type"
 ATTR_END1 = "end1"
 ATTR_END2 = "end2"
 ATTR_MARKERID = "marker-id"
+ATTR_SHAPE_CLASS = "shape-class"
+ATTR_STYLE_COLOR = "svg:fill"
 
 NS_URI = "http://www.w3.org/1999/xhtml"
 

@@ -26,6 +26,18 @@ def load(path):
     loader = WorkbookLoader(path)
     return loader.get_workbook()
 
+def load_all(path):
+    """ Load XMind workbook from given path. If file no
+    exist on given path then created new one.
+    
+    (workbook, stylesbook) return
+
+    """
+    loader = WorkbookLoader(path)
+    return loader.get_workbook(), loader.get_stylesbook()
+
+
+
 
 def save(workbook, path=None):
     """ Save workbook to given path. If path not given, then
